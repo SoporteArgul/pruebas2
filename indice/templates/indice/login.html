@@ -1,0 +1,17 @@
+{% extends 'indice/index.html' %}
+
+{% block header_index %}
+{% endblock header_index %}
+
+{% block pruebaTemplate %}
+    {% if msg %}
+        {{msg}}
+    {% endif %}
+    <form action={% url 'login' %} method='post'>
+        {% csrf_token %}
+         {{form.as_p}}
+        <button> Loguearse </button>
+    </form>
+
+{% endblock pruebaTemplate %}
+

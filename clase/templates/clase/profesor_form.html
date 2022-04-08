@@ -1,0 +1,17 @@
+{% extends 'indice/index.html' %}
+
+{% block header_index %}
+{% endblock header_index %}
+
+{% block pruebaTemplate %}
+<br>
+<br>
+<form method='post'>
+   {% csrf_token %}
+   {{form.as_p}}
+   <br>
+   <input type='submit' placeholder='enviar'>
+</form>
+{% endblock pruebaTemplate %}
+{% block footer %}
+{% endblock footer %}

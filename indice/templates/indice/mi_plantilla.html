@@ -1,0 +1,17 @@
+{% extends 'indice/index.html' %}
+{% block bloque_head %}
+  <title> Mi plantilla </title>
+{% endblock bloque_head %}
+{% block pruebaTemplate %}
+    <h1>mi plantilla la mas vacia</h1>
+    {% if largo == 5 %}
+         <p style="color:green;">{{nombre}}</p>
+         <p style="color:green;">{{apellido}}</p>
+    {% elif largo < 5 %}
+         <p style="color:red;">{{nombre}}</p>
+         <p style="color:red;">{{apellido}}</p>
+    {% else %} 
+         <p style="color:yellow;">{{nombre}}</p>
+         <p style="color:yellow;">{{apellido}}</p>
+    {% endif %}
+{% endblock pruebaTemplate %}

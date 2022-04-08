@@ -1,0 +1,24 @@
+{% extends 'indice/index.html' %}
+
+{% block header_index %}
+<a href={% url 'crear_estudiante' %}>Crear Estudiante</a>
+{% endblock header_index %}
+
+{% block pruebaTemplate %}
+<br>
+<br>
+LISTADO DE ESTUDIANTES
+{% for estudiante in listado_estudiante  %}
+    <li>
+        {{estudiante}} 
+        <a href={% url 'actualizar_estudiante' estudiante.id %}>Editar</a>
+        <a href={% url 'borrar_estudiante' estudiante.id %}>Borrar</a>
+    </li>
+    
+{% endfor %}
+
+{% endblock pruebaTemplate %}
+
+
+{% block footer %}
+{% endblock footer %}

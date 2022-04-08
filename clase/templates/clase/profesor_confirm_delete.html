@@ -1,0 +1,17 @@
+{% extends 'indice/index.html' %}
+
+{% block header_index %}
+{% endblock header_index %}
+
+{% block pruebaTemplate %}
+
+    <form method='post'>
+        {% csrf_token %}
+        Confirma el borrado del elemento?
+        <input type='submit' value='Confirmo'>
+
+{% endblock pruebaTemplate %}
+
+
+{% block footer %}
+{% endblock footer %}
