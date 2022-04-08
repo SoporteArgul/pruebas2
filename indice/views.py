@@ -53,7 +53,7 @@ def login_request(request):
            user=authenticate(username=username,password=password)
            if user is not None:
                login(request,user)
-               return render(request,'indice/index.html',{'msg':'Te logueaste!'})
+               return render(request,'indice/index.html',{'msg':f'Te logueaste {username}!!'})
            else:
                return render(request,'indice/login.html',{'form':form, 'msg': 'Error vuelva a intentarlo'})
        else:
@@ -76,18 +76,22 @@ def register(request):
         form=UserRegisterForm()
     return render(request,'indice/register.html',{'form':form})
     
-    
+
+
 @login_required
-def edit_profile(request):
+def edit_profile(request): 
     usuario=request.user
     if request.method == 'POST':
         miFormulario=UserEditForm(request.POST)
         if miFormulario.is_valid():
             informacion=miFormulario.cleaned_data
+          
             usuario.email=informacion['email']
-            usuario.password1=informacion['password1']        
-            usuario.password2=informacion['password2']
-            usuario.save()
+            usuario.password1=informacion.get('password1')        
+            usuario.password2=informacion.get('password2')
+            usuario.first_name=informacion.get('first_name','')
+            usuario.last_name=informacion.get('last_name','')
+            request.usuario.save()
             return render(request,'indice/index.html',{})
     else:
         miFormulario=UserEditForm(initial={'email':usuario.email})
