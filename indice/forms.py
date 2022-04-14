@@ -1,3 +1,4 @@
+from email.mime import image
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -22,4 +23,6 @@ class UserEditForm(forms.Form):
   password2=forms.CharField(label='Repetir contraseña',widget=forms.PasswordInput)
   first_name=forms.CharField(label='Nombre',max_length=20,required=False)
   last_name=forms.CharField(label='Apellido',max_length=20)
-  
+  #imagen=forms.ImageField(label='Pon tu foto aqui!')
+
+

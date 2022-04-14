@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Avatar
 
 def inicio(request):
-    return render(request,'indice/index.html',{'user_avatar_url':buscar_url_avatar(request.user),})
+    return render(request,'indice/index.html',{'user_avatar_url':buscar_url_avatar(request.user)})
 
 def otra_vista(request):
     return HttpResponse('''
@@ -106,8 +106,19 @@ def edit_profile(request):
         'username':request.user.username})
     return render(request, 'indice/editprofile.html',{'miFormulario':miFormulario,'msg':'','user_avatar_url':buscar_url_avatar(request.user)})
     
-    
-
+"""@loguin_required
+def add_avatar(request):
+    if request.method=='POST':
+        miformulario=AvatarFromulario(request.POST,request.FILES)
+        if miformulario.is_valid:
+            u=User.objects.get(username=request.user)
+            avatar=Avatar(user=u,imagen=miformulario.cleanned_data['imagen'])
+            avatar.save()
+            return render(request,'/indice/index.html')
+    else:
+        miformulario=AvatarFormulario()
+    return render(request,'indice/agregaravatar.html',{'miformulario':miformulario})   
+"""
 def buscar_url_avatar(user):
     return (Avatar.objects.filter(user=user)[0].avatar.url)
 

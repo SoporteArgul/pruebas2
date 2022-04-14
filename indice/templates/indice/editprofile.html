@@ -5,14 +5,18 @@
 {% endblock header_index %}
 
 {% block pruebaTemplate %}
-   
-   <h1>Formulario - Edit Profile</h1>
-   <h1>de {{usuario}}</h1>
-   <form action={% url 'editprofile' %} method='post'>{% csrf_token %}
-    <table>
-        {{miFormulario.as_table}}
-    </table>
-   <input type='submit',value='Enviar'>
-   <form>
-   
+
+    <div class='container' >
+        <div class='abs-center'>    
+            <h1>HOLA {{user.username}} EDITA TUS DATOS</h1>
+            <br>
+            <form action={% url 'editprofile' %} class='border p-3 form' method='post'>{% csrf_token %}
+                <table>
+                    {{miFormulario.as_table}}
+                </table>
+            <br>
+            <input type='submit',value='Enviar'>
+            <form>
+        </div>
+    </div>
 {% endblock pruebaTemplate %}
